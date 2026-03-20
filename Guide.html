@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Guide — How to Upload Work &amp; Manage Content</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#08080a;--white:#f0efe9;--grey:#6b6b6b;--grey-light:#999;--accent:#fbbf24;--code-bg:#111114;--font-display:'Playfair Display',serif;--font-body:'Outfit',sans-serif;--font-mono:'Space Mono',monospace;--font-suisse:'Be Vietnam Pro',sans-serif}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+::selection{background:var(--accent);color:var(--black)}
+
+.guide-container{max-width:860px;margin:0 auto;padding:6rem 2rem 4rem}
+
+h1{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4rem);font-weight:400;line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--accent)}
+
+.guide-intro{font-size:1.05rem;color:var(--grey-light);line-height:1.7;font-weight:300;margin-bottom:4rem;max-width:60ch}
+
+h2{font-family:var(--font-suisse);font-size:1.5rem;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-top:4rem;margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:.8rem}
+h2 .num{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em;background:rgba(251,191,36,.1);padding:.3rem .7rem;border-radius:4px}
+
+h3{font-family:var(--font-suisse);font-size:1rem;font-weight:700;margin-top:2rem;margin-bottom:.8rem;color:var(--accent)}
+
+p{font-size:.95rem;line-height:1.8;color:var(--grey-light);font-weight:300;margin-bottom:1rem}
+
+.code-block{background:var(--code-bg);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem 2rem;margin:1.2rem 0 2rem;overflow-x:auto;position:relative}
+.code-block::before{content:'HTML';position:absolute;top:.6rem;right:1rem;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.code-block code{font-family:var(--font-mono);font-size:.82rem;line-height:1.7;color:#e0e0e0;white-space:pre}
+.code-block .tag{color:#f97316}
+.code-block .attr{color:#a78bfa}
+.code-block .val{color:#34d399}
+.code-block .comment{color:#555;font-style:italic}
+
+.tip{background:rgba(251,191,36,.06);border-left:3px solid var(--accent);padding:1.2rem 1.5rem;border-radius:0 8px 8px 0;margin:1.5rem 0;font-size:.88rem;line-height:1.6;color:var(--grey-light)}
+.tip strong{color:var(--accent);font-weight:600}
+
+.warning{background:rgba(239,68,68,.06);border-left:3px solid #ef4444;padding:1.2rem 1.5rem;border-radius:0 8px 8px 0;margin:1.5rem 0;font-size:.88rem;line-height:1.6;color:var(--grey-light)}
+.warning strong{color:#ef4444;font-weight:600}
+
+.file-tree{background:var(--code-bg);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.5rem 2rem;margin:1.2rem 0 2rem;font-family:var(--font-mono);font-size:.82rem;line-height:2;color:#888}
+.file-tree .folder{color:var(--accent)}
+.file-tree .file{color:#e0e0e0}
+
+.checklist{list-style:none;margin:1rem 0 2rem;padding:0}
+.checklist li{padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9rem;color:var(--grey-light);display:flex;align-items:flex-start;gap:.8rem;line-height:1.5}
+.checklist li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+
+.visual-table{width:100%;border-collapse:collapse;margin:1.5rem 0 2rem}
+.visual-table th{font-family:var(--font-suisse);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:.8rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.08);color:var(--grey)}
+.visual-table td{padding:.8rem 1rem;font-size:.85rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--grey-light);vertical-align:top}
+.visual-table td:first-child{font-family:var(--font-mono);font-size:.78rem;color:#e0e0e0}
+
+.toc{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:2rem 2.5rem;margin:2rem 0 4rem}
+.toc h3{color:var(--white);margin-top:0}
+.toc ol{padding-left:1.2rem;margin:0}
+.toc li{padding:.3rem 0;font-size:.88rem;color:var(--grey-light)}
+.toc a{color:var(--accent);font-weight:500}
+
+footer{border-top:1px solid rgba(255,255,255,.06);padding:2rem;text-align:center;font-size:.78rem;color:var(--grey);margin-top:4rem}
+</style>
+</head>
+<body>
+<div class="guide-container">
+
+<h1>Portfolio <em>Guide</em></h1>
+<p class="guide-intro">Everything you need to know to upload your work, add client logos, manage categories, and keep your portfolio updated. Follow the sections below step by step.</p>
+
+<div class="toc">
+<h3>Table of Contents</h3>
+<ol>
+<li><a href="#folder">Folder Structure</a> — How to organize your files</li>
+<li><a href="#logos">Client Logos</a> — Adding logos to the client grid</li>
+<li><a href="#latest">Latest + Upcoming Cards</a> — Adding images to hero cards</li>
+<li><a href="#social">Social Media Section</a> — Uploading category card images</li>
+<li><a href="#ads">Meta Ads Section</a> — Same process for ads</li>
+<li><a href="#subpages">Category Subpages</a> — Adding work to social-media.html, ads.html, etc.</li>
+<li><a href="#new-category">Adding a New Category</a> — Creating entirely new work sections</li>
+<li><a href="#image-specs">Image Specs</a> — Recommended sizes and formats</li>
+<li><a href="#deploy">Deploying Changes</a> — Publishing updates</li>
+</ol>
+</div>
+
+<!-- ═══════════ 1. FOLDER STRUCTURE ═══════════ -->
+<h2 id="folder"><span class="num">01</span> Folder Structure</h2>
+<p>Create an <strong>images</strong> folder at the same level as your HTML files. Inside, organize by type:</p>
+
+<div class="file-tree">
+<span class="folder">your-portfolio/</span><br>
+├── index.html<br>
+├── social-media.html<br>
+├── ads.html<br>
+├── listings.html<br>
+├── banners.html<br>
+├── Guide.html<br>
+├── <span class="folder">images/</span><br>
+│   ├── <span class="folder">logos/</span><br>
+│   │   ├── <span class="file">boult-audio.png</span><br>
+│   │   ├── <span class="file">bath-store.png</span><br>
+│   │   ├── <span class="file">butternut.png</span><br>
+│   │   └── <span class="file">...</span><br>
+│   ├── <span class="folder">social-media/</span><br>
+│   │   ├── <span class="file">anjumkhan-cover.jpg</span><br>
+│   │   ├── <span class="file">musicpandit-cover.jpg</span><br>
+│   │   └── <span class="file">...</span><br>
+│   ├── <span class="folder">ads/</span><br>
+│   │   ├── <span class="file">butternut-ads-cover.jpg</span><br>
+│   │   └── <span class="file">...</span><br>
+│   ├── <span class="folder">listings/</span><br>
+│   ├── <span class="folder">banners/</span><br>
+│   └── <span class="folder">latest/</span><br>
+│       ├── <span class="file">anjumkhan-latest.jpg</span><br>
+│       └── <span class="file">...</span><br>
+</div>
+
+<div class="tip"><strong>Tip:</strong> Use lowercase filenames with hyphens (no spaces). Example: <code>boult-audio.png</code> not <code>Boult Audio.PNG</code></div>
+
+<!-- ═══════════ 2. CLIENT LOGOS ═══════════ -->
+<h2 id="logos"><span class="num">02</span> Client Logos</h2>
+<p>Currently the client grid shows text names. To show logos instead, replace the text inside each <code>.client-card</code> with an <code>&lt;img&gt;</code> tag.</p>
+
+<h3>Current (text only):</h3>
+<div class="code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"client-card"</span><span class="tag">&gt;</span>Boult Audio<span class="tag">&lt;/div&gt;</span></code></div>
+
+<h3>Replace with (logo image):</h3>
+<div class="code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"client-card"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"images/logos/boult-audio.png"</span> <span class="attr">alt</span>=<span class="val">"Boult Audio"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<p>The CSS already handles logo styling:</p>
+<ul class="checklist">
+<li>Logos auto-resize to max 120px wide, 40px tall</li>
+<li>They appear desaturated (grayscale) by default</li>
+<li>On hover, they become full color</li>
+<li>The alt text is used for accessibility</li>
+</ul>
+
+<div class="tip"><strong>Logo specs:</strong> PNG with transparent background. Width: 200-400px. Keep files under 50KB each.</div>
+
+<!-- ═══════════ 3. LATEST + UPCOMING ═══════════ -->
+<h2 id="latest"><span class="num">03</span> Latest + Upcoming Cards</h2>
+<p>These are the big horizontal-scroll cards in the white section. Each card currently uses a gradient background. To add a real image:</p>
+
+<h3>Current (gradient placeholder):</h3>
+<div class="code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"latest-card-thumb"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"thumb-bg"</span> <span class="attr">style</span>=<span class="val">"background:linear-gradient(...)"</span><span class="tag">&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"thumb-overlay"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<h3>Add image (keep gradient as fallback):</h3>
+<div class="code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"latest-card-thumb"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"thumb-bg"</span> <span class="attr">style</span>=<span class="val">"background:linear-gradient(...)"</span><span class="tag">&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"images/latest/anjumkhan-latest.jpg"</span> <span class="attr">alt</span>=<span class="val">"Anjum Khan"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"thumb-overlay"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<p>The image sits on top of the gradient (z-index:1), so the gradient only shows while the image loads. The overlay text stays on top (z-index:2) for readability.</p>
+
+<div class="tip"><strong>Image specs:</strong> 4:5 aspect ratio (800×1000px recommended). JPG, optimized to under 200KB.</div>
+
+<!-- ═══════════ 4. SOCIAL MEDIA SECTION ═══════════ -->
+<h2 id="social"><span class="num">04</span> Social Media Section Cards</h2>
+<p>The "SOCIAL MEDIA" horizontal scroll section on the homepage. Same principle — add an <code>&lt;img&gt;</code> inside <code>.cat-card-thumb</code>:</p>
+
+<h3>Add image to a category card:</h3>
+<div class="code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"cat-card-thumb"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"cat-thumb-bg"</span> <span class="attr">style</span>=<span class="val">"background:linear-gradient(...)"</span><span class="tag">&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"images/social-media/anjumkhan-cover.jpg"</span> <span class="attr">alt</span>=<span class="val">"Anjum Khan"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"cat-thumb-content"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<p>The overlay text (brand name, badge) stays visible on top of the image.</p>
+
+<div class="tip"><strong>Image specs:</strong> 3:4 aspect ratio (600×800px recommended). JPG. Use your best design mockup or portfolio screenshot for each brand.</div>
+
+<!-- ═══════════ 5. META ADS SECTION ═══════════ -->
+<h2 id="ads"><span class="num">05</span> Meta Ads Section Cards</h2>
+<p>Exact same process as Social Media above. Find the "META ADS" <code>.category-section</code> block in index.html and add <code>&lt;img&gt;</code> tags inside each <code>.cat-card-thumb</code>.</p>
+
+<div class="code-block"><code><span class="comment">&lt;!-- Inside the Meta Ads section --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"cat-card-thumb"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"cat-thumb-bg"</span> <span class="attr">style</span>=<span class="val">"background:..."</span><span class="tag">&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"images/ads/butternut-ads-cover.jpg"</span> <span class="attr">alt</span>=<span class="val">"Butternut Co. Ads"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"cat-thumb-content"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<!-- ═══════════ 6. SUBPAGES ═══════════ -->
+<h2 id="subpages"><span class="num">06</span> Category Subpages (social-media.html, ads.html, etc.)</h2>
+<p>Each category page (social-media.html, ads.html, listings.html, banners.html) uses <code>.brand-card</code> components with gradient backgrounds. To add real images:</p>
+
+<h3>Current brand card:</h3>
+<div class="code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"card-visual"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"gradient-bg"</span> <span class="attr">style</span>=<span class="val">"background:linear-gradient(...)"</span><span class="tag">&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"brand-name"</span><span class="tag">&gt;</span>Anjum Khan<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<h3>With real image:</h3>
+<div class="code-block"><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"card-visual"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"gradient-bg"</span> <span class="attr">style</span>=<span class="val">"background:linear-gradient(...)"</span><span class="tag">&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"images/social-media/anjumkhan-cover.jpg"</span>
+       <span class="attr">alt</span>=<span class="val">"Anjum Khan Social Media"</span>
+       <span class="attr">style</span>=<span class="val">"position:absolute;inset:0;width:100%;height:100%;object-fit:cover"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"brand-name"</span><span class="tag">&gt;</span>Anjum Khan<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<div class="warning"><strong>Important:</strong> The subpage HTML files (social-media.html, ads.html, etc.) don't have the <code>img</code> CSS built in yet. You need to add the inline style <code>style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"</code> on the img tag, or add this CSS rule to their &lt;style&gt; block: <br><br><code>.card-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }</code></div>
+
+<!-- ═══════════ 7. NEW CATEGORY ═══════════ -->
+<h2 id="new-category"><span class="num">07</span> Adding a New Category</h2>
+<p>To add a new category (e.g., "YouTube Thumbnails") to the homepage:</p>
+
+<h3>Step 1: Add a new section in index.html</h3>
+<p>Copy an existing <code>.category-section</code> block and paste it. Change the heading, scroll ID, and card content:</p>
+
+<div class="code-block"><code><span class="comment">&lt;!-- NEW CATEGORY: YouTube Thumbnails --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"category-section"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"category-section-header"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;h2&gt;</span>YouTube Thumbnails<span class="tag">&lt;/h2&gt;</span>
+    <span class="comment">&lt;!-- Copy scroll-nav buttons, change IDs --&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"category-scroll"</span> <span class="attr">id</span>=<span class="val">"ytScroll"</span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- Add .cat-card items here --&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></div>
+
+<h3>Step 2: Add a work card in the "Selected Work" grid</h3>
+<div class="code-block"><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"youtube.html"</span> <span class="attr">class</span>=<span class="val">"work-card reveal"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"card-top"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="val">"card-number"</span><span class="tag">&gt;</span>05<span class="tag">&lt;/span&gt;</span>
+    <span class="comment">&lt;!-- Copy arrow div from existing card --&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"card-content"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"card-title"</span><span class="tag">&gt;</span>YouTube Thumbnails<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"card-desc"</span><span class="tag">&gt;</span>Click-worthy thumbnails that boost video CTR.<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/a&gt;</span></code></div>
+
+<h3>Step 3: Create the subpage</h3>
+<p>Copy social-media.html, rename to youtube.html, and update the header + brand cards inside it.</p>
+
+<!-- ═══════════ 8. IMAGE SPECS ═══════════ -->
+<h2 id="image-specs"><span class="num">08</span> Image Specifications</h2>
+
+<table class="visual-table">
+<thead><tr><th>Location</th><th>Aspect Ratio</th><th>Size (px)</th><th>Format</th><th>Max File Size</th></tr></thead>
+<tbody>
+<tr><td>Client logos</td><td>Free</td><td>200-400w × auto</td><td>PNG (transparent bg)</td><td>50 KB</td></tr>
+<tr><td>Latest cards</td><td>4:5</td><td>800 × 1000</td><td>JPG (80% quality)</td><td>200 KB</td></tr>
+<tr><td>Category cards (homepage)</td><td>3:4</td><td>600 × 800</td><td>JPG (80% quality)</td><td>150 KB</td></tr>
+<tr><td>Brand cards (subpages)</td><td>4:3</td><td>800 × 600</td><td>JPG (80% quality)</td><td>200 KB</td></tr>
+<tr><td>Banner cards (subpages)</td><td>16:9</td><td>960 × 540</td><td>JPG (80% quality)</td><td>200 KB</td></tr>
+</tbody>
+</table>
+
+<div class="tip"><strong>Pro tip:</strong> Use <a href="https://squoosh.app" target="_blank">squoosh.app</a> or <a href="https://tinypng.com" target="_blank">tinypng.com</a> to compress images before uploading. Smaller files = faster website.</div>
+
+<!-- ═══════════ 9. DEPLOYING ═══════════ -->
+<h2 id="deploy"><span class="num">09</span> Deploying Changes</h2>
+
+<ul class="checklist">
+<li>If hosted on GitHub Pages: commit and push changes to your repository</li>
+<li>If hosted on Netlify/Vercel: drag and drop the entire folder to redeploy</li>
+<li>If using a custom hosting (Hostinger, etc.): upload changed files via FTP or file manager</li>
+<li>Always test on both desktop and mobile after deploying</li>
+<li>Clear browser cache (Ctrl+Shift+R) to see latest changes</li>
+</ul>
+
+<div class="tip"><strong>Quick checklist before publishing:</strong> All images load correctly? All links work? Mobile looks good? Text content is accurate? Loading speed is acceptable?</div>
+
+</div>
+
+<footer>Portfolio Guide — Himanshu Narwaria &copy; 2025</footer>
+</body>
+</html>

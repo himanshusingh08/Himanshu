@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Himanshu Narwaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@200;300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#08080a;--white:#f0efe9;--grey:#6b6b6b;--grey-light:#999;--font-display:'Playfair Display',Georgia,serif;--font-body:'Outfit',sans-serif;--font-mono:'Space Mono',monospace;--ease-out-expo:cubic-bezier(.16,1,.3,1);--ease-smooth:cubic-bezier(.25,.46,.45,.94)}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--white);color:var(--black)}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;opacity:.6}
+
+.cursor{position:fixed;width:16px;height:16px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%;pointer-events:none;z-index:9999;transition:width .3s,height .3s,border-color .3s,background .3s;transform:translate(-50%,-50%)}.cursor.hover{width:60px;height:60px;border-color:var(--white);background:rgba(255,255,255,.06)}@media(pointer:coarse){.cursor{display:none}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,10,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+nav .logo{font-family:var(--font-display);font-weight:500;font-size:1.15rem;letter-spacing:.02em}
+nav .back-link{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:.6rem;position:relative;padding:.3rem 0}
+nav .back-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--white);transition:width .5s var(--ease-out-expo)}
+nav .back-link:hover::after{width:100%}
+
+/* ═══════════ SECTION 1: HERO ═══════════ */
+.cs-hero{
+  padding:12rem 3rem 6rem;
+  position:relative;
+  overflow:hidden;
+}
+.cs-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06) 20%,rgba(255,255,255,.06) 80%,transparent)}
+.cs-hero .label{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-bottom:2rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .8s var(--ease-out-expo) .1s forwards}
+.cs-hero .label::before{content:'';width:30px;height:1px;background:rgba(255,255,255,.2)}
+.cs-hero h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,7rem);line-height:.92;letter-spacing:-.04em;font-weight:400;max-width:16ch;opacity:0;animation:fadeUp .8s var(--ease-out-expo) .2s forwards}
+.cs-hero h1 em{font-style:italic}
+.cs-hero .hero-meta{display:flex;gap:3rem;margin-top:3rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s var(--ease-out-expo) .35s forwards}
+.cs-hero .meta-item{display:flex;flex-direction:column;gap:.3rem}
+.cs-hero .meta-item .meta-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--grey)}
+.cs-hero .meta-item .meta-value{font-family:var(--font-body);font-size:.95rem;font-weight:400;color:var(--white)}
+.cs-hero .hero-intro{margin-top:2.5rem;font-size:1.1rem;color:var(--grey-light);max-width:55ch;line-height:1.75;font-weight:300;opacity:0;animation:fadeUp .8s var(--ease-out-expo) .45s forwards}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{transform:translateY(30px)}}
+
+/* ═══════════ SHARED SECTION STYLES ═══════════ */
+.cs-section{padding:6rem 3rem}
+.cs-section .section-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem}
+.cs-section .section-label::before{content:'';width:24px;height:1px;background:rgba(255,255,255,.2)}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06) 20%,rgba(255,255,255,.06) 80%,transparent)}
+
+/* ═══════════ SECTION 2: OVERVIEW ═══════════ */
+.cs-overview{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.cs-overview .overview-left h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.03em;font-weight:400}
+.cs-overview .overview-left h2 em{font-style:italic}
+.cs-overview .overview-right{display:flex;flex-direction:column;gap:2.5rem}
+.overview-block{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem}
+.overview-block h4{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);margin-bottom:.8rem}
+.overview-block p{font-size:.95rem;color:var(--grey-light);line-height:1.75;font-weight:300}
+
+/* ═══════════ SECTION 3: PROCESS ═══════════ */
+.cs-process .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:1rem}
+.process-step{border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:2.5rem 2rem;background:rgba(255,255,255,.02);transition:all .5s ease;position:relative;overflow:hidden}
+.process-step:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04);transform:translateY(-4px)}
+.process-step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1) 50%,transparent);opacity:0;transition:opacity .5s ease}
+.process-step:hover::before{opacity:1}
+.process-step .step-num{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;color:var(--grey);margin-bottom:1.5rem}
+.process-step h4{font-family:var(--font-display);font-size:1.3rem;font-weight:400;margin-bottom:.8rem;letter-spacing:-.01em}
+.process-step p{font-size:.85rem;color:var(--grey-light);line-height:1.6;font-weight:300}
+
+/* ═══════════ SECTION 4: VISUAL GALLERY ═══════════ */
+.cs-gallery .gallery-grid{display:grid;gap:1.5rem}
+.cs-gallery .gallery-grid.layout-hero{grid-template-columns:1fr}
+.cs-gallery .gallery-grid.layout-2col{grid-template-columns:1fr 1fr}
+.cs-gallery .gallery-grid.layout-3col{grid-template-columns:1fr 1fr 1fr}
+.gallery-item{border-radius:12px;overflow:hidden;position:relative;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+.gallery-item .gallery-placeholder{
+  aspect-ratio:16/9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.gallery-item .gallery-placeholder .gal-bg{position:absolute;inset:0;transition:transform .8s var(--ease-out-expo)}
+.gallery-item:hover .gal-bg{transform:scale(1.04)}
+.gallery-item .gallery-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .8s var(--ease-out-expo)}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-item .gallery-placeholder .upload-hint{position:relative;z-index:2;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);pointer-events:none}
+
+/* ═══════════ SECTION 5: RESULTS ═══════════ */
+.cs-results .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:1rem}
+.result-card{border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:3rem 2.5rem;text-align:center;background:rgba(255,255,255,.02);transition:all .5s ease}
+.result-card:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04);transform:translateY(-4px)}
+.result-card .result-num{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,3.5rem);letter-spacing:-.03em;margin-bottom:.5rem}
+.result-card .result-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:.8rem}
+.result-card p{font-size:.85rem;color:var(--grey-light);line-height:1.5;font-weight:300}
+
+/* ═══════════ SECTION 6: CTA ═══════════ */
+.cs-cta{text-align:center;padding:8rem 3rem}
+.cs-cta h2{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.5rem);line-height:.95;letter-spacing:-.04em;font-weight:400;margin-bottom:1.5rem}
+.cs-cta h2 em{font-style:italic}
+.cs-cta p{color:var(--grey-light);font-size:1rem;margin-bottom:3rem;max-width:40ch;margin-left:auto;margin-right:auto;font-weight:300;line-height:1.7}
+.cs-cta .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.4rem;border:1px solid rgba(255,255,255,.3);border-radius:100px;font-family:var(--font-body);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:transparent;color:var(--white);transition:all .45s var(--ease-smooth);position:relative;overflow:hidden;isolation:isolate}
+.btn::before{content:'';position:absolute;inset:0;background:var(--white);border-radius:100px;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease-out-expo);z-index:-1}
+.btn:hover::before{transform:scaleX(1);transform-origin:left}
+.btn span{position:relative;z-index:1;transition:color .4s ease}
+.btn:hover span{color:var(--black)}
+.btn svg{position:relative;z-index:1;transition:all .4s ease}
+.btn:hover svg{stroke:var(--black)}
+.btn-filled{background:var(--white);color:var(--black);border-color:var(--white)}
+.btn-filled::before{background:var(--black)}
+.btn-filled:hover span{color:var(--white)}
+.btn-filled:hover svg{stroke:var(--white)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.12s}
+.reveal-delay-2{transition-delay:.24s}
+.reveal-delay-3{transition-delay:.36s}
+
+/* Footer */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:3rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--grey);font-weight:300}
+footer a{transition:color .3s}footer a:hover{color:var(--white)}
+
+/* Responsive */
+@media(max-width:1024px){
+  .cs-overview{grid-template-columns:1fr;gap:3rem}
+  .cs-process .process-grid{grid-template-columns:repeat(2,1fr)}
+  .cs-results .results-grid{grid-template-columns:repeat(2,1fr)}
+  .cs-gallery .gallery-grid.layout-3col{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:1.2rem 1.5rem}
+  .cs-hero{padding:9rem 1.5rem 4rem}
+  .cs-hero .hero-meta{gap:1.5rem}
+  .cs-section{padding:4rem 1.5rem}
+  .cs-process .process-grid{grid-template-columns:1fr}
+  .cs-results .results-grid{grid-template-columns:1fr}
+  .cs-gallery .gallery-grid.layout-2col{grid-template-columns:1fr}
+  .cs-gallery .gallery-grid.layout-3col{grid-template-columns:1fr}
+  .cs-cta{padding:5rem 1.5rem}
+  .cs-cta .cta-buttons{flex-direction:column;align-items:center}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <a href="index.html" class="logo">Himanshu Narwaria</a>
+  <a href="javascript:history.back()" class="back-link" id="backLink">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    <span id="backText">All Work</span>
+  </a>
+</nav>
+
+<!-- ═══════════ SECTION 1: HERO ═══════════ -->
+<section class="cs-hero">
+  <div class="label" id="csLabel">Case Study / Social Media</div>
+  <h1 id="csTitle">Anjum Khan —<br><em>Fashion Campaign</em></h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value" id="csClient">Anjum Khan</span></div>
+    <div class="meta-item"><span class="meta-label">Category</span><span class="meta-value" id="csCategory">Social Media Campaign</span></div>
+    <div class="meta-item"><span class="meta-label">Industry</span><span class="meta-value" id="csIndustry">Fashion</span></div>
+    <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value" id="csYear">2024</span></div>
+  </div>
+  <p class="hero-intro" id="csIntro">Create premium editorial visuals for a fashion collection launch — driving engagement and building a consistent, aspirational brand identity across social media platforms.</p>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ SECTION 2: OVERVIEW ═══════════ -->
+<section class="cs-section">
+  <div class="section-label reveal">Overview</div>
+  <div class="cs-overview">
+    <div class="overview-left reveal">
+      <h2>Understanding<br>the <em>challenge</em></h2>
+    </div>
+    <div class="overview-right">
+      <div class="overview-block reveal reveal-delay-1">
+        <h4>Client</h4>
+        <p id="ovClient">Anjum Khan is a fashion designer known for elegant, editorial-style collections. They needed a visual refresh for their social media presence to match the premium quality of their clothing line.</p>
+      </div>
+      <div class="overview-block reveal reveal-delay-2">
+        <h4>Objective</h4>
+        <p id="ovObjective">Create premium editorial visuals for the fashion launch that would elevate the brand's Instagram presence and drive significantly higher engagement rates.</p>
+      </div>
+      <div class="overview-block reveal reveal-delay-3">
+        <h4>Problem</h4>
+        <p id="ovProblem">The brand was struggling with low engagement rates and inconsistent visual identity across their social media channels, resulting in poor brand perception and missed conversion opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ SECTION 3: PROCESS ═══════════ -->
+<section class="cs-section">
+  <div class="section-label reveal">Process</div>
+  <div class="cs-process">
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <h4>Research</h4>
+        <p id="prResearch">Studied the brand's tone, target audience demographics, competitor strategies, and current engagement patterns to identify key areas for improvement.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <h4>Concept</h4>
+        <p id="prConcept">Created a soft editorial direction with warm, muted tones that reflect the premium nature of the brand while standing out in crowded social feeds.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <h4>Design</h4>
+        <p id="prDesign">Designed a complete carousel series and story templates with consistent typography, color grading, and layout systems optimized for engagement.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <h4>Final Output</h4>
+        <p id="prOutput">Delivered production-ready assets across all required formats — feed posts, carousels, stories, and highlight covers — with a comprehensive brand style guide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ SECTION 4: VISUAL GALLERY ═══════════ -->
+<section class="cs-section">
+  <div class="section-label reveal">Visual Gallery</div>
+
+  <!-- Hero image — full width -->
+  <div class="gallery-grid layout-hero reveal" style="margin-bottom:1.5rem">
+    <div class="gallery-item">
+      <div class="gallery-placeholder" id="galHero">
+        <div class="gal-bg" id="galHeroBg" style="background:linear-gradient(135deg,#d4b896,#a67c5a,#705030)"></div>
+        <!-- Replace with: <img src="images/case-studies/anjumkhan-hero.jpg" alt="Anjum Khan Hero"> -->
+        <span class="upload-hint">Upload hero image</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2-column grid -->
+  <div class="gallery-grid layout-2col reveal" style="margin-bottom:1.5rem">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg" id="gal2aBg" style="background:linear-gradient(135deg,#c4a886,#96704a)"></div>
+        <span class="upload-hint">Upload image</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg" id="gal2bBg" style="background:linear-gradient(135deg,#b4986a,#806040)"></div>
+        <span class="upload-hint">Upload image</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3-column grid -->
+  <div class="gallery-grid layout-3col reveal">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg" id="gal3aBg" style="background:linear-gradient(135deg,#d4b896,#a07050)"></div>
+        <span class="upload-hint">Upload image</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg" id="gal3bBg" style="background:linear-gradient(135deg,#c0a080,#906838)"></div>
+        <span class="upload-hint">Upload image</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gal-bg" id="gal3cBg" style="background:linear-gradient(135deg,#b09070,#785030)"></div>
+        <span class="upload-hint">Upload image</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ SECTION 5: RESULTS ═══════════ -->
+<section class="cs-section">
+  <div class="section-label reveal">Results</div>
+  <div class="cs-results">
+    <div class="results-grid">
+      <div class="result-card reveal">
+        <div class="result-num" id="resNum1">+40%</div>
+        <div class="result-label" id="resLabel1">Engagement Increase</div>
+        <p id="resDesc1">Post engagement rates increased dramatically within the first month of launching the new visual direction.</p>
+      </div>
+      <div class="result-card reveal reveal-delay-1">
+        <div class="result-num" id="resNum2">2.1x</div>
+        <div class="result-label" id="resLabel2">Better Brand Consistency</div>
+        <p id="resDesc2">Unified visual identity across all platforms, creating a cohesive and recognizable brand presence.</p>
+      </div>
+      <div class="result-card reveal reveal-delay-2">
+        <div class="result-num" id="resNum3">+65%</div>
+        <div class="result-label" id="resLabel3">Improved Ad Performance</div>
+        <p id="resDesc3">Ads using the new creative direction saw significantly better click-through and conversion rates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ SECTION 6: CTA ═══════════ -->
+<section class="cs-cta">
+  <h2 class="reveal">Want results<br>like <em>these?</em></h2>
+  <p class="reveal reveal-delay-1">Let's create something impactful for your brand.</p>
+  <div class="cta-buttons reveal reveal-delay-2">
+    <a href="index.html#work" class="btn btn-filled"><span>View More Work</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <a href="index.html#contact" class="btn"><span>Get in Touch</span></a>
+  </div>
+</section>
+
+<footer><span>&copy; 2025 Himanshu Narwaria</span><a href="index.html">Back to Home</a></footer>
+
+<script>
+/* ═══════════ CASE STUDY DATA SYSTEM ═══════════
+   Each brand has its own data object. The page reads ?brand=xxx from
+   the URL and swaps content dynamically. To add a new brand:
+   1. Add a new object to the caseStudies map below
+   2. Link to: case-study.html?brand=yourbrandkey
+*/
+const caseStudies = {
+  anjumkhan: {
+    label: 'Case Study / Social Media',
+    title: 'Anjum Khan —<br><em>Fashion Campaign</em>',
+    client: 'Anjum Khan',
+    category: 'Social Media Campaign',
+    industry: 'Fashion',
+    year: '2024',
+    intro: 'Create premium editorial visuals for a fashion collection launch — driving engagement and building a consistent, aspirational brand identity across social media platforms.',
+    ovClient: 'Anjum Khan is a fashion designer known for elegant, editorial-style collections. They needed a visual refresh for their social media presence to match the premium quality of their clothing line.',
+    ovObjective: 'Create premium editorial visuals for the fashion launch that would elevate the brand\'s Instagram presence and drive significantly higher engagement rates.',
+    ovProblem: 'The brand was struggling with low engagement rates and inconsistent visual identity across their social media channels, resulting in poor brand perception and missed conversion opportunities.',
+    prResearch: 'Studied the brand\'s tone, target audience demographics, competitor strategies, and current engagement patterns to identify key areas for improvement.',
+    prConcept: 'Created a soft editorial direction with warm, muted tones that reflect the premium nature of the brand while standing out in crowded social feeds.',
+    prDesign: 'Designed a complete carousel series and story templates with consistent typography, color grading, and layout systems optimized for engagement.',
+    prOutput: 'Delivered production-ready assets across all required formats — feed posts, carousels, stories, and highlight covers — with a comprehensive brand style guide.',
+    results: [
+      { num: '+40%', label: 'Engagement Increase', desc: 'Post engagement rates increased dramatically within the first month of launching the new visual direction.' },
+      { num: '2.1x', label: 'Better Brand Consistency', desc: 'Unified visual identity across all platforms, creating a cohesive and recognizable brand presence.' },
+      { num: '+65%', label: 'Improved Ad Performance', desc: 'Ads using the new creative direction saw significantly better click-through and conversion rates.' }
+    ],
+    gradient: 'linear-gradient(135deg,#d4b896,#a67c5a,#705030)',
+    backLink: 'social-media.html',
+    backText: 'Social Media'
+  },
+  boult: {
+    label: 'Case Study / Listings',
+    title: 'Boult Audio —<br><em>Product Listings</em>',
+    client: 'Boult Audio',
+    category: 'Amazon Listings + A+ Content',
+    industry: 'Consumer Electronics',
+    year: '2024',
+    intro: 'Design premium product listing images and A+ content for India\'s fastest growing audio brand, optimized for Amazon marketplace search and conversion.',
+    ovClient: 'Boult Audio is one of India\'s leading consumer audio brands with millions of units sold. They needed listing designs that communicate product quality and drive purchase decisions.',
+    ovObjective: 'Create conversion-optimized A+ content and product images that stand out in Amazon search results and increase click-through to purchase rates.',
+    ovProblem: 'Existing listings lacked visual consistency and failed to communicate key product differentiators, resulting in lower-than-expected conversion rates despite strong brand awareness.',
+    prResearch: 'Analyzed top-performing competitor listings, Amazon SEO image best practices, and customer review patterns to identify what drives purchase decisions.',
+    prConcept: 'Developed a dark, premium visual language with dramatic lighting and feature callout systems that highlight technical specifications.',
+    prDesign: 'Created hero images, lifestyle shots, feature infographics, comparison charts, and A+ brand story content for the complete product range.',
+    prOutput: 'Delivered 7 optimized images per listing across 12 SKUs, plus A+ content modules and brand store banners.',
+    results: [
+      { num: '+42%', label: 'CTR Improvement', desc: 'Click-through rates on search results improved significantly with the new visual approach.' },
+      { num: '+28%', label: 'Conversion Rate', desc: 'Product page to purchase conversion rates increased with better visual communication of value.' },
+      { num: '4.5★', label: 'Visual Rating', desc: 'Customer feedback specifically praised the visual quality and information clarity of listings.' }
+    ],
+    gradient: 'linear-gradient(135deg,#0d0d0d,#1a1a2e,#0d0d0d)',
+    backLink: 'listings.html',
+    backText: 'Listings'
+  },
+  bathstore: {
+    label: 'Case Study / Social + Ads',
+    title: 'The Bath Store —<br><em>Cherry Blossom</em>',
+    client: 'The Bath Store',
+    category: 'Social Media + Meta Ads',
+    industry: 'Beauty & Personal Care',
+    year: '2024',
+    intro: 'Craft a soft, premium visual identity for The Bath Store\'s Cherry Blossom collection across social media and performance ad campaigns.',
+    ovClient: 'The Bath Store is a premium D2C bath and body care brand. They were launching a new Cherry Blossom product line and needed cohesive creative across all digital channels.',
+    ovObjective: 'Build visual awareness for the new collection and drive sales through coordinated social media and paid advertising campaigns.',
+    ovProblem: 'Previous campaigns lacked a unified visual thread between organic social and paid ads, leading to fragmented brand perception and underperforming ad spend.',
+    prResearch: 'Conducted audience analysis, studied beauty industry visual trends, and mapped the customer journey from discovery to purchase.',
+    prConcept: 'Developed a soft pink color palette with floral motifs that evoke the Cherry Blossom theme while maintaining the brand\'s premium positioning.',
+    prDesign: 'Created Instagram feed posts, story sequences, carousel ads, single-image ads, and retargeting creatives — all sharing a cohesive visual system.',
+    prOutput: 'Delivered 40+ creative assets across organic social, paid social, and marketplace listings — with a style guide for future content creation.',
+    results: [
+      { num: '+55%', label: 'Engagement Rate', desc: 'Social media engagement surged with the cohesive Cherry Blossom visual direction.' },
+      { num: '3.4x', label: 'ROAS on Ads', desc: 'Meta ad campaigns using the new creatives delivered strong return on ad spend.' },
+      { num: '+38%', label: 'New Followers', desc: 'Instagram following grew significantly during the campaign period.' }
+    ],
+    gradient: 'linear-gradient(135deg,#e8c8d8,#d4a0c0,#b87098)',
+    backLink: 'social-media.html',
+    backText: 'Social Media'
+  },
+  butternut: {
+    label: 'Case Study / Ads + Social',
+    title: 'Butternut Co. —<br><em>Sale Campaigns</em>',
+    client: 'The Butternut Co.',
+    category: 'Meta Ads + Social Media',
+    industry: 'FMCG / Food',
+    year: '2024',
+    intro: 'Design high-conversion ad creatives and playful social media content for one of India\'s most popular nut butter brands.',
+    ovClient: 'Butternut Co. is a leading D2C nut butter brand with a playful, colorful brand personality. They needed creatives that convert while maintaining brand fun.',
+    ovObjective: 'Drive sales during seasonal promotions through compelling Meta ad creatives and maintain brand engagement on social media.',
+    ovProblem: 'Ad fatigue was setting in with repetitive creative formats, and engagement rates on organic posts were declining as the brand scaled.',
+    prResearch: 'Analyzed ad performance data, identified top-performing creative formats, and studied FMCG social media trends in the D2C space.',
+    prConcept: 'Built a playful, product-forward creative system with warm tones, appetizing photography, and urgency-driven layout for sale periods.',
+    prDesign: 'Designed sale campaign ads, product bundle showcases, recipe-style content, and lifestyle integration posts.',
+    prOutput: 'Delivered 60+ creatives across Facebook, Instagram feed and stories, with A/B test variations for performance optimization.',
+    results: [
+      { num: '3.2x', label: 'ROAS Improvement', desc: 'Return on ad spend improved dramatically with the refreshed creative approach.' },
+      { num: '+47%', label: 'Social Engagement', desc: 'Organic post engagement recovered and exceeded previous highs.' },
+      { num: '-32%', label: 'Cost Per Acquisition', desc: 'Customer acquisition costs decreased with better-performing ad creatives.' }
+    ],
+    gradient: 'linear-gradient(135deg,#f5e0b8,#e8c890,#c49850)',
+    backLink: 'meta-ads.html',
+    backText: 'Meta Ads'
+  },
+  gotravelab: {
+    label: 'Case Study / Banners + Ads',
+    title: 'Go TravelAB —<br><em>Destination Banners</em>',
+    client: 'Go TravelAB',
+    category: 'Web Banners + Meta Ads',
+    industry: 'Travel & Tourism',
+    year: '2024',
+    intro: 'Create immersive destination banners and travel package promotions that inspire wanderlust and drive bookings.',
+    ovClient: 'Go TravelAB is a travel booking platform specializing in curated destination packages. They needed hero banners and ads that sell the experience.',
+    ovObjective: 'Increase website engagement and booking conversions through visually compelling banner designs and targeted Meta ads.',
+    ovProblem: 'Generic stock-photo banners failed to convey the unique experiences offered, resulting in high bounce rates and low package inquiries.',
+    prResearch: 'Studied travel industry visual trends, analyzed competitor websites, and identified which destinations and visual styles drive the highest engagement.',
+    prConcept: 'Developed an immersive, deep-toned visual style with destination photography, pricing overlays, and urgency elements.',
+    prDesign: 'Created website hero banners, promotional banners, Facebook/Instagram ads, and email campaign graphics.',
+    prOutput: 'Delivered 30+ banner designs and 20+ ad creatives across web and social platforms.',
+    results: [
+      { num: '-45%', label: 'Bounce Rate Drop', desc: 'Website bounce rates decreased significantly with the new immersive banner designs.' },
+      { num: '+60%', label: 'Package Inquiries', desc: 'Destination package inquiry forms saw a major increase in submissions.' },
+      { num: '2.8x', label: 'Ad ROAS', desc: 'Travel package ad campaigns delivered strong return on advertising spend.' }
+    ],
+    gradient: 'linear-gradient(135deg,#0f2027,#203a43,#2c5364)',
+    backLink: 'banners.html',
+    backText: 'Banners'
+  },
+  musicpandit: {
+    label: 'Case Study / Social Media',
+    title: 'MusicPandit —<br><em>Learn Music Online</em>',
+    client: 'MusicPandit',
+    category: 'Social Media',
+    industry: 'EdTech / Music',
+    year: '2024',
+    intro: 'Design vibrant, energetic social media creatives for an online music education platform targeting aspiring musicians across India.',
+    ovClient: 'MusicPandit is an online platform that teaches Indian classical and contemporary music. They needed social content that excites and enrolls students.',
+    ovObjective: 'Build brand awareness and drive course enrollments through engaging social media content across Instagram and Facebook.',
+    ovProblem: 'The brand\'s social presence felt outdated and didn\'t resonate with the younger demographic they were trying to attract for online music classes.',
+    prResearch: 'Analyzed the target audience (18-35 music enthusiasts), studied EdTech social media strategies, and identified content formats that drive enrollment.',
+    prConcept: 'Created a vibrant, high-energy visual direction with bold colors, dynamic typography, and music-inspired graphic elements.',
+    prDesign: 'Designed course announcement posts, student testimonial templates, music tips carousels, and promotional story sequences.',
+    prOutput: 'Delivered a complete social media kit with 50+ templates, highlight covers, and a posting schedule framework.',
+    results: [
+      { num: '+52%', label: 'Follower Growth', desc: 'Instagram following grew rapidly with the refreshed, vibrant visual identity.' },
+      { num: '+35%', label: 'Course Enrollments', desc: 'Social media-driven course sign-ups increased significantly quarter over quarter.' },
+      { num: '3x', label: 'Content Engagement', desc: 'Average post engagement tripled compared to the previous quarter\'s content.' }
+    ],
+    gradient: 'linear-gradient(135deg,#c62828,#880e4f,#4a148c)',
+    backLink: 'social-media.html',
+    backText: 'Social Media'
+  }
+};
+
+// Parse URL params and populate page
+const params = new URLSearchParams(window.location.search);
+const brandKey = params.get('brand') || 'anjumkhan';
+const data = caseStudies[brandKey] || caseStudies.anjumkhan;
+
+// Update title
+document.title = data.client + ' — Case Study — Himanshu Narwaria';
+
+// Hero
+document.getElementById('csLabel').textContent = data.label;
+document.getElementById('csTitle').innerHTML = data.title;
+document.getElementById('csClient').textContent = data.client;
+document.getElementById('csCategory').textContent = data.category;
+document.getElementById('csIndustry').textContent = data.industry;
+document.getElementById('csYear').textContent = data.year;
+document.getElementById('csIntro').textContent = data.intro;
+
+// Overview
+document.getElementById('ovClient').textContent = data.ovClient;
+document.getElementById('ovObjective').textContent = data.ovObjective;
+document.getElementById('ovProblem').textContent = data.ovProblem;
+
+// Process
+document.getElementById('prResearch').textContent = data.prResearch;
+document.getElementById('prConcept').textContent = data.prConcept;
+document.getElementById('prDesign').textContent = data.prDesign;
+document.getElementById('prOutput').textContent = data.prOutput;
+
+// Results
+if(data.results && data.results.length >= 3){
+  document.getElementById('resNum1').textContent = data.results[0].num;
+  document.getElementById('resLabel1').textContent = data.results[0].label;
+  document.getElementById('resDesc1').textContent = data.results[0].desc;
+  document.getElementById('resNum2').textContent = data.results[1].num;
+  document.getElementById('resLabel2').textContent = data.results[1].label;
+  document.getElementById('resDesc2').textContent = data.results[1].desc;
+  document.getElementById('resNum3').textContent = data.results[2].num;
+  document.getElementById('resLabel3').textContent = data.results[2].label;
+  document.getElementById('resDesc3').textContent = data.results[2].desc;
+}
+
+// Gallery gradient
+document.getElementById('galHeroBg').style.background = data.gradient;
+const g = data.gradient;
+['gal2aBg','gal2bBg','gal3aBg','gal3bBg','gal3cBg'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.style.background = g;
+});
+
+// Back link
+document.getElementById('backLink').href = data.backLink;
+document.getElementById('backText').textContent = data.backText;
+
+// Cursor
+const cursor=document.getElementById('cursor');let cx=0,cy=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY});
+function ac(){cx+=(tx-cx)*.12;cy+=(ty-cy)*.12;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(ac)}ac();
+document.querySelectorAll('a,button,.btn,.gallery-item').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'))});
+
+// Reveal
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
